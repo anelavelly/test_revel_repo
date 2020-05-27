@@ -8,4 +8,3 @@ phases:
        - aws sts get-caller-identity
        - aws s3 ls
        - aws imagebuilder start-image-pipeline-execution --image-pipeline-arn arn:aws:imagebuilder:us-east-2:338054916879:image-pipeline/webamimaker --region us-east-2
-
