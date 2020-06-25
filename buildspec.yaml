@@ -7,4 +7,5 @@ phases:
        - aws --version
        - aws sts get-caller-identity
        - aws s3 ls
-       - aws imagebuilder start-image-pipeline-execution --image-pipeline-arn arn:aws:imagebuilder:us-east-2:338054916879:image-pipeline/webamimaker --region us-east-2
+       - arn=`aws cloudformation describe-stacks --stack-name revelmediagroup-dev-image-pipeline --query "Stacks[0].Outputs[0].OutputValue" --output text --region us-east-1`
+       - aws imagebuilder start-image-pipeline-execution --image-pipeline-arn $arn --region us-east-1
