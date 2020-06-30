@@ -1,7 +1,7 @@
 version: 0.0
 os: linux
 files:
-   - source: /codedeploy
+   - source: /
      destination: /var/www/html
 permissions:
    - object: /var/www/html
@@ -13,10 +13,10 @@ permissions:
        - file
 hooks:
    BeforeInstall:
-    - location: codedeploy/scripts/installapache.sh
+    - location: scripts/installapache.sh
       runas: root
-    - location: codedeploy/scripts/startapache.sh
+    - location: scripts/startapache.sh
       runas: root
    AfterInstall:
-    - location: codedeploy/scripts/restartapache.sh
+    - location: scripts/restartapache.sh
       runas: root
