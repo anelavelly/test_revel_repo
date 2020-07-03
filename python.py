@@ -29,11 +29,11 @@ while status != 'AVAILABLE':
 if status == 'AVAILABLE':
     template_name='helloworldtest'
     ami_id = ibchecker.get_ami_id(image_arn)
-    # ec2_obj.update_launch_template(template_name, ami_id)
+    ec2_obj.update_launch_template(template_name, ami_id)
     print(ami_id)
     template_id = ec2_obj.template_id(template_name)
     print(template_id)
     instance_ids = ec2_obj.get_instance_ids(template_id)
     print(instance_ids)
-    # ec2_obj.terminate_instances(instance_ids)
+    ec2_obj.terminate_instances(instance_ids)
     print('done')
