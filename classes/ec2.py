@@ -76,7 +76,7 @@ class ec2:
                         id,
                     ]
                 )
-                print('waiting for 300sec for new instance to be ready')
-                time.sleep(300)
+                print('waiting for 600sec for new instance to be ready')
+                time.sleep(600)
         except Exception as e:
             logger.error('Failed in terminate_instances' + str(e))
