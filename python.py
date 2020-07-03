@@ -18,9 +18,10 @@ image_arn = ibchecker.get_image_arn()
 while status != 'AVAILABLE':
     status = ibchecker.check_if_ready(image_arn)
     print(status)
-    if not status in ['FAILED, CREATING, BUILDING, AVAILABLE, TESTING, DISTRIBUTING, INTEGRATING, CANCELLED, FAILED, DEPRECATED, DELETED']:
+    if status not in ['FAILED', 'CREATING', 'BUILDING', 'AVAILABLE', 'TESTING', 'DISTRIBUTING', 'INTEGRATING', 'CANCELLED', 'FAILED', 'DEPRECATED', 'DELETED']:
         break
     if status in ['FAILED', 'CANCELLED', 'DELETED']:
+        print('im here too')
         break
     if status != 'AVAILABLE':
         time.sleep(5)
@@ -28,11 +29,11 @@ while status != 'AVAILABLE':
 if status == 'AVAILABLE':
     template_name='helloworldtest'
     ami_id = ibchecker.get_ami_id(image_arn)
-    ec2_obj.update_launch_template(template_name, ami_id)
+    # ec2_obj.update_launch_template(template_name, ami_id)
     print(ami_id)
     template_id = ec2_obj.template_id(template_name)
     print(template_id)
     instance_ids = ec2_obj.get_instance_ids(template_id)
     print(instance_ids)
-    ec2_obj.terminate_instances(instance_ids)
+    # ec2_obj.terminate_instances(instance_ids)
     print('done')
