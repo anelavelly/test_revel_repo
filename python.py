@@ -18,10 +18,9 @@ image_arn = ibchecker.get_image_arn()
 while status != 'AVAILABLE':
     status = ibchecker.check_if_ready(image_arn)
     print(status)
-    if status not in ['FAILED', 'CREATING', 'BUILDING', 'AVAILABLE', 'TESTING', 'DISTRIBUTING', 'INTEGRATING', 'CANCELLED', 'FAILED', 'DEPRECATED', 'DELETED']:
+    if status not in ['PENDING', 'FAILED', 'CREATING', 'BUILDING', 'AVAILABLE', 'TESTING', 'DISTRIBUTING', 'INTEGRATING', 'CANCELLED', 'FAILED', 'DEPRECATED', 'DELETED']:
         break
     if status in ['FAILED', 'CANCELLED', 'DELETED']:
-        print('im here too')
         break
     if status != 'AVAILABLE':
         time.sleep(5)
